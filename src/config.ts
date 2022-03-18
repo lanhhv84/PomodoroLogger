@@ -2,12 +2,13 @@
 import { existsSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import shortid from 'shortid';
+import os from 'os';
 
-const appdataDir =
-    process.env.APPDATA ||
-    (process.platform === 'darwin'
-        ? process.env.HOME + '/Library/Preferences'
-        : process.env.HOME + '/.local/share');
+const appdataDir = process.env.APPDATA
+    ? join(os.homedir(), process.env.APPDATA)
+    : process.platform === 'darwin'
+    ? process.env.HOME + '/Library/Preferences'
+    : process.env.HOME + '/.local/share';
 export const baseDir = join(appdataDir, 'PomodoroLogger');
 if (!existsSync(baseDir)) {
     mkdirSync(baseDir);

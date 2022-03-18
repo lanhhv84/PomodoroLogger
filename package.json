@@ -44,14 +44,12 @@
         ]
     },
     "build": {
+        "extraResources": [
+            ".env"
+        ],
         "afterSign": "electron-builder-notarize",
         "productName": "Pomodoro Logger",
         "appId": "com.github.rem2016.pomodoro-logger",
-        "publish": {
-            "provider": "github",
-            "owner": "zxch3n",
-            "repo": "PomodoroLogger"
-        },
         "mac": {
             "category": "public.app-category.productivity",
             "target": [
